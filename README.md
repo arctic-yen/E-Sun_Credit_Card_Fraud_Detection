@@ -25,19 +25,23 @@ Hello everyone, we are Drunkard on the Way, here are our solution
 ## MODEL  
 Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model, 1 Catboost model and 1 NN model all use 5-Kflod unshuffled.  
 >1. LightGBM  
-  >>a) Arctic's Base                                   LB:0.664281  
-  >>b) Jeff's Base                                     LB:
-  >>c) Arctic's Base add scale_pos_weight              LB:0.648713  
-  >>d) Arctic's Base add DAE features
-  >>e) Stack XGBoost and CatBoost                      LB:0.664136  
+  >>a) Arctic's Base                                   LB:0.664281 public/ private  
+  >>b) Jeff's Base                                     LB:  
+  >>c) Arctic's Base add scale_pos_weight              LB:0.648713 public/ private  
+  >>d) Arctic's Base add DAE features  
+  >>e) Stack XGBoost and CatBoost                      LB:0.664136 public/ private  
 >2. XGBoost  
-  >>Arctic's LightGBM features                         LB:0.662387  
+  >>Arctic's LightGBM features                         LB:0.662387 public/ private  
 >3. CatBoost  
-  >>Arctic's LightGBM features                         LB:0.647348  
+  >>Arctic's LightGBM features                         LB:0.647348 public/ private  
 >4. DAE+NN  
-  >>first, We create a Denosing Autoencoder(DAE) with 3 hidden layers, normalized categorical features using RankGauss, binary features transfer to 1/-1 and continuous features using StandardScaler, relu as the activation function, optimizer use SGD.  
-  >>second, NN is trained with both lightGBM features and DAE latent features, NN have 3 hidden layers(256-128-64),dropouts(.25-.2-.15), use batch normalization after activation, gelu as the activation function, optimizer use Adam, focal loss ad th loss functuin.  
+  >>First, We create a Denosing Autoencoder(DAE) with 3 hidden layers, normalized categorical features using RankGauss, binary features transfer to 1/-1 and continuous features using StandardScaler, relu as the activation function, optimizer use SGD.  
+  >>Second, NN is trained with both lightGBM features and DAE latent features, NN have 3 hidden layers(256-128-64),dropouts(.25-.2-.15), use batch normalization after activation, gelu as the activation function, optimizer use Adam, focal loss ad th loss functuin.  
 
-##VALIDATION STRATEGY  
+## VALIDATION STRATEGY  
 >1. train 75% and predict 25%  
 >2. train first 30 days and predict last 30 days  
+
+## ENSEMBLING METHODOLOGY  
+>>First, We blend 3 LightGBM model(Arctic's base + Jeff's Base + train with DAE features), we keep any model who predict is fraud  
+>>Second, We stack our blended LightGBM model, XGBoost, CatBoost and NN(Weight: LightGBM*0.5+XGBoost*0.3+CatBoost*0.15+NN*0.15)  
