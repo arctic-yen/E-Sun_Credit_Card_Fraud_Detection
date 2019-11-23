@@ -15,11 +15,13 @@ Hello everyone, we are Drunkard on the Way, here are our solution
  >>b) beta target mean  
 >6. FastICA  
 >7. SparsePCA  
->8. TruncatedSVD  
+>8. TruncatedSVD
+
 ##FEATURE SELECTION  
 >1. RFECV  
 >2. lightGBM feature importances  
->3. forward feature selection  
+>3. forward feature selection
+
 ##MODEL  
 Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model, 1 Catboost model and 1 NN model all use 5-Kflod unshuffled.  
 >1. LightGBM  
