@@ -25,13 +25,13 @@ Hello everyone, we are Drunkard on the Way, here are our solution
 ## MODEL  
 Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model, 1 Catboost model and 1 NN model all use 5-Kflod unshuffled.  
 >1. LightGBM  
-  >>a) Arctic's Base                                   LB:0.664281 public/ private  
+  >>a) Arctic's Base                                   LB:0.664281 public/ 0.66722 private  
   >>b) Jeff's Base                                     LB:  
-  >>c) Arctic's Base add scale_pos_weight              LB:0.648713 public/ private  
+  >>c) Arctic's Base add scale_pos_weight              LB:0.648713 public/ 0.658079 private  
   >>d) Arctic's Base add DAE features  
-  >>e) Stack XGBoost and CatBoost                      LB:0.664136 public/ private  
+  >>e) Stack XGBoost and CatBoost                      LB:0.664136 public/ 0.670637 private  
 >2. XGBoost  
-  >>Arctic's LightGBM features                         LB:0.662387 public/ private  
+  >>Arctic's LightGBM features                         LB:0.662387 public/ 0.665913 private  
 >3. CatBoost  
   >>Arctic's LightGBM features                         LB:0.647348 public/ private  
 >4. DAE+NN  
@@ -43,5 +43,6 @@ Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model
 >2. train first 30 days and predict last 30 days  
 
 ## ENSEMBLING METHODOLOGY  
->>First, We blend 3 LightGBM model(Arctic's base + Jeff's Base + train with DAE features), we keep any model who predict is fraud  
->>Second, We stack our blended LightGBM model, XGBoost, CatBoost and NN(Weight: LightGBM*0.5+XGBoost*0.3+CatBoost*0.15+NN*0.15)  
+>>First, We blend 4 LightGBM model(Arctic's base + Jeff's Base + train with DAE features*0.5 + Arctic's Base add scale_pos_weight*0.5), set fraud_ind >= 1 to 1
+>>Second, We blend XGBoost, CatBoost and NN(1+1+1), we just keep there intersection (fraud_ind == 3)
+>>Final, stack two blend model
