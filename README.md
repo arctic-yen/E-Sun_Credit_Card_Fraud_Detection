@@ -26,7 +26,7 @@ Hello everyone, we are Drunkard on the Way, here are our solution
 Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model, 1 Catboost model and 1 NN model all use 5-Kflod unshuffled.  
 >1. LightGBM  
   >>a) Arctic's Base                                   LB:0.664281 public/ 0.66722 private  
-  >>b) Jeff's Base                                     LB:  
+  >>b) Jeff's Base                                     LB:0.672959 public/ 0.673165 private  
   >>c) Arctic's Base add scale_pos_weight              LB:0.648713 public/ 0.658079 private  
   >>d) Arctic's Base add DAE features  
   >>e) Stack XGBoost and CatBoost                      LB:0.664136 public/ 0.670637 private  
