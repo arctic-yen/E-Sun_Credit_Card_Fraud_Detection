@@ -19,11 +19,12 @@ Hello everyone, we are Drunkard on the Way, here are our solution
 
 ## FEATURE SELECTION  
 >1. RFECV  
->2. lightGBM feature importances  
->3. forward feature selection
+>2. LightGBM Feature Importances  
+>3. Forward Feature Selection  
+>4. Permutation Importance(eli5)  
 
 ## MODEL  
-Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model, 1 Catboost model and 1 NN model all use 5-Kflod unshuffled.  
+Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model, 1 Catboost model and 1 NN model all use 5-KFlod unshuffled.  
 >1. LightGBM  
   >>a) Arctic's Base                                   LB:0.664281 public/ 0.66722 private  
   >>b) Jeff's Base                                     LB:0.672959 public/ 0.673165 private  
@@ -41,6 +42,9 @@ Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model
 ## VALIDATION STRATEGY  
 >1. train 75% and predict 25%  
 >2. train first 30 days and predict last 30 days  
+>3. GroupKFlod by month  
+>4. StratifiedKFold  
+>5. KFlod  
 
 ## ENSEMBLING METHODOLOGY  
 >>First, We blend 4 LightGBM model(Arctic's base + Jeff's Base + train with DAE features*0.5 + Arctic's Base add scale_pos_weight*0.5), set fraud_ind >= 1 to 1
