@@ -37,7 +37,7 @@ Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model
   >>Arctic's LightGBM features                         LB:0.647348 public/ private  
 >4. DAE+NN  
   >>First, We create a Denosing Autoencoder(DAE) with 3 hidden layers, normalized categorical features using RankGauss, binary features transfer to 1/-1 and continuous features using StandardScaler, relu as the activation function, optimizer use SGD.  
-  >>Second, NN is trained with both lightGBM features and DAE latent features, NN have 3 hidden layers(256-128-64),dropouts(.25-.2-.15), use batch normalization after activation, gelu as the activation function, optimizer use Adam, focal loss ad th loss functuin.  
+  >>Second, NN is trained with both lightGBM features and DAE latent features, NN have 3 hidden layers(256-128-64),dropouts(.25-.2-.15), use batch normalization after activation, relu as the activation function, optimizer use Adam, focal loss as the loss functuin.  
 
 ## VALIDATION STRATEGY  
 >1. train 75% and predict 25%  
