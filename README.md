@@ -22,6 +22,7 @@ Hello everyone, we are Drunkard on the Way, here are our solution
 >2. LightGBM Feature Importances  
 >3. Forward Feature Selection  
 >4. Permutation Importance(eli5)  
+>5. Time Consistency
 
 ## MODEL  
 Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model, 1 Catboost model and 1 NN model all use 5-KFlod unshuffled.  
@@ -53,5 +54,6 @@ Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model
 
 
 ## Reference
-> beta target mean: https://www.kaggle.com/c/avito-demand-prediction/discussion/60059  
+> Beta Target Encoding: https://www.kaggle.com/c/avito-demand-prediction/discussion/60059  
 > Denosing Autoencoder: https://www.kaggle.com/c/porto-seguro-safe-driver-prediction/discussion/44629  
+> Time Consistency: https://www.kaggle.com/c/ieee-fraud-detection/discussion/111308  
