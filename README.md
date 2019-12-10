@@ -50,3 +50,8 @@ Our solution was based on stacking. We create 5 lightGBM models, 1 XGBoost model
 >>First, We blend 4 LightGBM model(Arctic's base + Jeff's Base + train with DAE features*0.5 + Arctic's Base add scale_pos_weight*0.5), set fraud_ind >= 1 to 1
 >>Second, We blend XGBoost, CatBoost and NN(1+1+1), we just keep there intersection (fraud_ind == 3)
 >>Final, stack two blend model
+
+
+## Reference
+> beta target mean: https://www.kaggle.com/c/avito-demand-prediction/discussion/60059  
+> Denosing Autoencoder: https://www.kaggle.com/c/porto-seguro-safe-driver-prediction/discussion/44629  
