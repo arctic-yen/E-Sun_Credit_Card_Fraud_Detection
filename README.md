@@ -13,9 +13,6 @@ Hello everyone, we are Drunkard on the Way, here are our solution
 >5. Target Encoding  
  >>a) Target Mean  
  >>b) Bayesian Target Mean  
->6. FastICA  
->7. SparsePCA  
->8. TruncatedSVD
 
 ## FEATURE SELECTION  
 >1. RFECV  
